@@ -1,0 +1,13 @@
+<h2>Product Details</h2>
+
+<div *ngIf="product">
+  <h3>{{ product.name | uppercase }}</h3>
+  <h4>{{ product.price | currency:'EUR' }}</h4>
+<h5>{{ product.id }}</h5>
+  <p>{{ product.description }}</p>
+
+</div>
+
+<div *ngIf="!product">
+    <h3>Prodotto non trovato</h3>
+</div>
