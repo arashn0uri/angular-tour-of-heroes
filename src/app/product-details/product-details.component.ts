@@ -1,30 +1,39 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { Component, OnInit } from "@angular/core";
+import { ActivatedRoute, ParamMap } from "@angular/router";
 
-import { products } from '../products';
+import { products } from "../products";
+import { CartService } from "../services/cart.service";
 
 @Component({
-  selector: 'app-product-details',
-  templateUrl: './product-details.component.html',
-  styleUrls: ['./product-details.component.css']
+    selector: "app-product-details",
+    templateUrl: "./product-details.component.html",
+    styleUrls: ["./product-details.component.css"]
 })
 export class ProductDetailsComponent implements OnInit {
-	product: any;
-  constructor(private route: ActivatedRoute) { }
+    product: any;
+    constructor(
+        private route: ActivatedRoute,
+        private cartService: CartService
+    ) {}
 
-  ngOnInit() {
-    // First get the product id from the current route.
-    console.log(this.route);
-    console.log(this.route.snapshot);
-    const routeParams: ParamMap = this.route.snapshot.paramMap;
-    console.log(routeParams);
-    const id: string = routeParams.get('productId');
-    console.log(id);
-    const productIdFromRoute: number = Number(id);
-    console.log(productIdFromRoute);
-  
-    // Find the product that correspond with the id provided in route.
-    this.product = products.find(product => product.id === productIdFromRoute);
-  }
+    ngOnInit() {
+        // First get the product id from the current route.
+        console.log(this.route);
+        console.log(this.route.snapshot);
+        const routeParams: ParamMap = this.route.snapshot.paramMap;
+        console.log(routeParams);
+        const id: string = routeParams.get("productId");
+        console.log(id);
+        const productIdFromRoute: number = Number(id);
+        console.log(productIdFromRoute);
 
+        // Find the product that correspond with the id provided in route.
+        this.product = products.find(
+            product => product.id === productIdFromRoute
+        );
+    }
+    addToCart(product: any) {
+        this.cartService.addToCart(product);
+        window.alert("Your product has been added to the cart!");
+    }
 }
