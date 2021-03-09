@@ -127,7 +127,7 @@ app-top-bar h1 {
 
 .cart-item, .shipping-item {
   width: 100%;
-  min-width: 20px;
+  min-width: 200px;
   max-width: calc(100vw - 32px);
   display: flex;
   flex-direction: row;
@@ -139,7 +139,7 @@ app-top-bar h1 {
 }
 .cart-total {
   width: 100%;
-  min-width: 200px;
+  min-width: calc(100vw - 30px);
   max-width: calc(100vw - 32px);
   display: flex;
   flex-direction: row;
